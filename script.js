@@ -1,172 +1,91 @@
-console.log("задача 1");
- let name = prompt("Ваше имя?");
- let age = prompt("Ваш возраст?");
- let city = prompt("Ваш город?")
- let phone = prompt("Ваш телефон?");
- let email = prompt("Ваш email?");
- let company = prompt("Ваша компания?");
- console.log(`Меня зовут ${name} Мне ${age} лет. Я проживаю в городе ${city} и работаю в компании ${company}. Мои контактные данные: ${phone}, ${email}.`);
+console.log("Задание1");
+let a = 0
+while(a <= 50 ){
+    console.log(a);
+    a++
+}
 
- console.log("");
+console.log("");
 
- console.log("задача 2");
- let now =  2023;
-//  let year = now - age;
- console.log(`${name} родился в ${now - age} году.`);
+let b = 35;
+while(b >= 8){
+    console.log(b);
+    b--
+}
 
- console.log("");
- 
- console.log("задача 3");
- 
-let str = prompt('Число?')
+console.log("");
+console.log("Задание 2");
+let c = 89;
+while(c >= 11){
+    console.log(c);
+    c--
+}
 
-console.log(str);
-let sum1 =  Number(str[0]) + Number(str[1] + Number(str[2]))
-let sum2 =  Number(str[3]) + Number(str[4] + Number(str[5]))
+console.log("");
+console.log("Задание 3");
+let sum = 0;
+for(let d = 100; d >= 0; d--){
 
-if(sum1 == sum2){
-    console.log("да");
+     sum += d;
+    console.log(sum)
+}
+
+console.log("");
+console.log("Задание 4");
+let e = +prompt('Введите число от 1 до 5');
+
+let sum4 = 0;
+if(e < 1 || e > 5){
+    console.log("не правильное число");
 }else{
-    console.log('нет');
-}
- 
-console.log("");
-
-console.log("задача 4");
-
-let a = prompt("Введите число");
-if( a > 0){
-    console.log("верно");
-}else{
-    console.log("Неверно");
-}
-
-
-console.log("");
-
-console.log("задача 5");
-a = 10;
-let b = 2
-let summ = a + b;
-let diff = a -b;
-let multiplication = a * b;
-let division = a / b;
-if( summ > 2){
-    console.log(Math.pow(summ, 2));
+    for(let i = 0; i <= e; i++ ){
+        sum4 += i;
+    }
+    console.log(sum4);
 }
 
 console.log("");
+console.log("Задание 5");
+for(let f = 8; f <= 56; f++){
+    if( f % 2 == 0){
+        console.log(f);
+    }
+}
+console.log("");
+console.log("метод while");
+let f = 8;
+while( f <= 56){
+    if(f % 2 == 0){
+        console.log(f);
+    }
+    f++
+}
 
-console.log("задача 6");
 
-if(a > 2 & a < 11 || b >= 6 & b < 14){
-    console.log("верно");
-}else{
-    console.log("Неверно");
+console.log("");
+console.log("Задание 6");
+
+for(let q = 2; q < 10; q++){
+    for(let w = 1; w < 10; w++){
+        console.log(`${q}*${w} = ${q*w}`);
+    }
 }
 
 console.log("");
+console.log("Задание 7(1)");
 
-console.log("задача 7");
-
-let n = prompt("Введите число от 0 до 59, что-бы узнать четверть часа");
-if(n < 15){
-    console.log("первая");
-}else if( n < 30){
-    console.log("вторая");
-}else if(n < 45){
-    console.log("третья");
-}else{
-    console.log("четвертая");
+let num = 0;
+for(let n = 1000; n > 50;  ){
+   num = 0
+    for(let k = 1; n > 50; k++){
+        n /= 2;
+        num = k;
+        console.log(n);
+    }
+    console.log(num);
 }
-
+    
 console.log("");
+console.log("Задание 8(2)");
 
-console.log("задача 8");
-let day = prompt("Введите число от 1 до 31")
-if( day < 10){
-    console.log("первая декада");
-}else if( day < 20 ){
-    console.log("вторая декада");
-}else{
-    console.log("третья декада");
-}
 
-console.log("");
-
-console.log("задача 9");
-
-let days = prompt('введите количиство дней');
-
-let year = days / 365;
-if(year < 1){
-    console.log("Меньше года");
-}
-let month = days / 31;
-if( month < 1){
-    console.log("Меньше месяца");
-}
-let week = days / 7;
-if( week < 1){
-    console.log("Меньше месяца");
-}
-let hours = days * 24;
-let minute = days * 1440;
-let second = days * 86400;
-
-console.log("");
-
-console.log("задача 10");
-
-let season = Math.floor(days/31);
-
-switch(season){
-    case 0:
-    console.log(1);
-    console.log("зима");
-    break;
-    case 1:
-    console.log(2);
-    console.log("зима");
-    break;
-    case 2:
-    console.log(3);
-    console.log("весна");
-    break;
-    case 3:
-    console.log(4);
-    console.log("весна");
-    break;
-    case 4:
-    console.log(5);
-    console.log("весна");
-    break;
-    case 5:
-    console.log(6);
-    console.log("лето");
-    break;
-    case 6:
-    console.log(7);
-    console.log("лето");
-    break;
-    case 7:
-    console.log(8);
-    console.log("лето");
-    break;
-    case 8:
-    console.log(9);
-    console.log("осень");
-    break;
-    case 9:
-    console.log(10);
-    console.log("осень");
-    break;
-    case 10:
-    console.log(11);
-    console.log("осень");
-    break;
-    case 11:
-    console.log(12);
-    console.log("зима");
-    break;
-}
