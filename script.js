@@ -89,3 +89,13 @@ console.log("");
 console.log("Задание 8(2)");
 
 
+let srednee = 0;
+let summa = 0;
+let call = 0;
+let numb;
+while((numb = +prompt('Введите чило')) !== 0 && numb != ""){
+    call++ 
+    summa += +numb
+    srednee = summa/call
+    console.log(`Сумма = ${summa}, Среднее = ${srednee}`);
+}
