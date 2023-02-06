@@ -1,52 +1,137 @@
-// задание 2
-let a1 = 5 % 3;
-let a2 = 3 % 5;
-let a3 = 5 + '3';
-let a4 = '5' - 3;
-let a5 = 75 + 'кг';
-let a6 = 785 * 653;
-let a7 = 100 / 25;
-let a8 = 0 * 0;
-let a9 = 0 / 2;
-let a10 = 89 / 0;
-let a11 = 98 + 2;
-let a12 = 5 - 98;
-let a13 = (8 + 56 * 4) / 5;
-let a14 = (9 - 12) * 7 / (5 + 2);
-let a15 = 1 || 0;
-let a16 = false || true;
-let a17 = true > 0;
-console.log(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a15, a16, a17);
+console.log("Задача 1");
+console.log("");
 
-// задание 3
-let height = 23;
-let width = 10;
-let SPryam = height * width;
-console.log(SPryam + 'см');
+let arrOne = [1, 2, 3, 4, 5];
 
-// задание 4
-let Hcil = 10;
-let VCilindra = 3.14 * Math.pow(a7, 2) * Hcil;
-console.log(VCilindra)
+for(let i = 0; i <arrOne.length; i++ ){
+    console.log(arrOne[i]);
+}
 
-//  задание 5
- let Rkrug = 5; 
- let Skrug = 3.14 * Math.pow(Rkrug, 2);
- console.log(Skrug)
+console.log("");
+console.log("Задача 2");
+console.log("");
 
-//  задание 6
+let arrTwo = [-2, -1, -3, 15, 0, -4, 2, -5, 9, -15, 0, 4, 5, -6, 10, 7];
+for(let i = 0; i < arrTwo.length; i++){
+    if(arrTwo[i] > -10 && arrTwo[i] < -3){
+        console.log(arrTwo[i])
+    }else{
+        continue;
+    }
+}
 
-// let a = 5;
-// let b = 7;
-// let Htrap = 10;
-// let STrap = ((a + b) / 2 ) * Htrap;
-// console.log(STrap + 'см')
+console.log("");
+console.log("Задача 3");
+console.log("");
 
-// задание 7
-let S = 2000000;
-let years = 5;
-let p = 10;
-let Pereplata = (S / 100 * p) * years;
-console.log(Pereplata)
+console.log("метод while")
 
- 
+let arrThreeWhile = [];
+let q = 23;
+let w = 0
+while( q <= 57){
+    console.log(arrThreeWhile[w] = q);
+    w++
+    q++
+}
+
+console.log("");
+
+console.log("метод for")
+let arrThreeFor = []
+let result = 0;
+for(let i = 23; i <= 57; i++){
+    let e = 0
+    console.log(arrThreeFor[e] = i);
+    result += arrThreeFor[e];
+    e++
+    
+}
+console.log(result);
+
+
+console.log("");
+console.log("Задача 4");
+console.log("");
+
+let arrFour = ['10', '20', '30', '50', '235', '3000'];
+
+for( let i = 0; i < arrFour.length; i++){
+    let x = arrFour[i];
+    if(x[0] == 1 || x[0] == 2 || x[0] == 5){
+        console.log(x);
+    }
+}
+
+console.log("");
+console.log("Задача 5");
+console.log("");
+
+let arrFive = ['Пн', "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+for(let i = 0; i < arrFive.length; i++){
+    let x = arrFive[i]
+    
+    if( x == "Сб" || x == "Вс"){
+        console.log(x.bold());
+    }else{
+        console.log(x);
+    }
+}
+
+console.log("");
+console.log("Задача 6");
+console.log("");
+
+let arrSix = ['This ', 'is ', 'Sparta!'];
+
+arrSix.push("!!!");
+console.log(arrSix[arrSix.length-1]);
+
+// console.log("");
+// console.log("Задача 7");
+// console.log("");
+
+// let arrSeven =[];
+// let number = 0;
+
+// while(1){
+//     let a = +prompt("Введите строго число!");
+//     if(isNaN(a)){
+//         alert("Введено не число");
+//         continue
+//     }
+//     if (a === ''){
+//         break
+//     }
+
+// }
+
+console.log("");
+console.log("Задача 8");
+console.log("");
+
+let arrEight = [12, false, 'Текст', 4, 2, -5, 0];
+let arrEightReverse = arrEight.reverse()
+
+let r = 0;
+while(r < arrEight.length-1){
+    console.log(arrEightReverse[r])
+    r++
+}
+
+
+console.log("");
+console.log("Задача 9");
+console.log("");
+
+let arrNine = [5, 9, 21, , , 9, 78, , , , 6];
+let y = 0;
+for(let i = 0; i < arrNine.length; i++){
+    let x = arrNine[i];
+    
+    if(x === undefined){
+        y += 1
+    }
+    
+}
+console.log(y)
