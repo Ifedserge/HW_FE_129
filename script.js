@@ -1,52 +1,108 @@
-// задание 2
-let a1 = 5 % 3;
-let a2 = 3 % 5;
-let a3 = 5 + '3';
-let a4 = '5' - 3;
-let a5 = 75 + 'кг';
-let a6 = 785 * 653;
-let a7 = 100 / 25;
-let a8 = 0 * 0;
-let a9 = 0 / 2;
-let a10 = 89 / 0;
-let a11 = 98 + 2;
-let a12 = 5 - 98;
-let a13 = (8 + 56 * 4) / 5;
-let a14 = (9 - 12) * 7 / (5 + 2);
-let a15 = 1 || 0;
-let a16 = false || true;
-let a17 = true > 0;
-console.log(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a15, a16, a17);
+console.log("1. Дана строка 'aaa@bbb@ccc'. Замените все @ на ! с помощью глобального поиска и замены.");
+console.log('Результат');
 
-// задание 3
-let height = 23;
-let width = 10;
-let SPryam = height * width;
-console.log(SPryam + 'см');
+let str1 = 'aaa@bbb@ccc';
+console.log(str1.replace(/@/g, "!"));
 
-// задание 4
-let Hcil = 10;
-let VCilindra = 3.14 * Math.pow(a7, 2) * Hcil;
-console.log(VCilindra)
+console.log('');
+console.log("2. В переменной date лежит дата в формате 2025-12-31. Преобразуйте эту дату в формат 31/12/2025.");
+console.log('Результат');
+let date = '2025-12-31';
 
-//  задание 5
- let Rkrug = 5; 
- let Skrug = 3.14 * Math.pow(Rkrug, 2);
- console.log(Skrug)
+let arrDate = date.split('-');
+let arrDateRev = arrDate.reverse()
 
-//  задание 6
+console.log(arrDateRev[0] + '/' + arrDateRev[1] + '/' + arrDateRev[2]);
 
-// let a = 5;
-// let b = 7;
-// let Htrap = 10;
-// let STrap = ((a + b) / 2 ) * Htrap;
-// console.log(STrap + 'см')
+console.log('');
+console.log("3. Дана строка «Я учу javascript!». Вырежете из нее слово «учу» и слово «javascript» тремя разными способами (через substr, substring, slice).");
+console.log('Результат');
 
-// задание 7
-let S = 2000000;
-let years = 5;
-let p = 10;
-let Pereplata = (S / 100 * p) * years;
-console.log(Pereplata)
+let str3 = 'Я учу javascript!'
+console.log(str3.substr(2, 3));
+console.log(str3.substring(2, str3.length-1));
+console.log(str3.slice(6, 16));
 
- 
+console.log('');
+console.log('4. Дан массив с элементами 4, 2, 5, 19, 13, 0, 10. Найдите квадратный корень из суммы кубов его элементов. Для решения воспользуйтесь циклом for.');
+console.log('Результат');
+
+let arr4 = [4, 2, 5, 19, 13, 0, 10]
+let sumCube = 0
+
+for(let i = 0; i < arr4.length; i++){
+    let cube = Math.pow(arr4[i], 3)
+    sumCube += cube;
+}
+
+console.log(Math.sqrt(sumCube));
+
+console.log('');
+console.log('5. Даны переменные a и b. Отнимите от a переменную b и результат присвойте переменной c. Сделайте так, чтобы в любом случае в переменную c записалось положительное значение. Проверьте работу скрипта при a и b, равных соответственно 3 и 5, 6 и 1.');
+console.log('Результат');
+
+let a = 3, b = 5, c = a - b;
+if (c < 0){
+    c = String(c)
+    c = c.replace('-', '')
+    console.log(+c)
+}else{
+    console.log(c);
+}
+
+console.log('');
+console.log('6. Выведите на экран текущую дату-время в формате 12:59:59 31.12.2014. Для решения этой задачи напишите функцию, которая будет добавлять 0 перед днями и месяцами, которые состоят из одной цифры (из 1.9.2014 сделает 01.09.2014).');
+console.log('Результат');
+
+function time(){
+
+    let d = new Date();
+    let time = d.getHours() + '.' + d.getMinutes() + '.' + d.getSeconds()
+    let day = d.getDate();
+    let mounth = d.getMonth();
+    let year = d.getFullYear();
+
+    if( day < 10){
+        let dayStr = String(day);
+        day =  dayStr.padStart(2, 0);
+    }
+    if (mounth < 10){
+        let mounthStr = String(mounth);
+        mounth = mounthStr.padStart(2, 0)
+    }
+    console.log(time + ' ' + day + '.' + mounth + '.' + year);
+}
+time();
+
+console.log('');
+console.log('7. Дана строка "a aba abba abbba abca abea". Напишите регулярку, которая найдет строки aba, abba, abbba по шаблону: буква "a", буква "b" любое количество раз, буква "a"');
+console.log('Результат');
+
+
+let str7 = 'a aba abba abbba abca abea';
+console.log(str7.search(/aba/g));
+console.log(str7.search(/abba/g));
+console.log(str7.search(/abbba/g));
+
+
+console.log('');
+console.log('8. Напишите функцию строгой проверки ввода номер телефона в международном формате (<код страны> <код города или сети> <номер телефона>). Функция должна возвращать true или false. Используйте регулярные выражения.');
+console.log('Результат');
+let num = "+3755";
+function number(a){
+    // let a= +375291112211;
+    let regexp = /[+][375]/gi;
+    console.log(regexp.test(num));
+}
+number(num);
+
+console.log('');
+console.log('9. Напишите функцию строгой проверки адреса эл. почты с учетом следующих условий:');
+console.log('Результат');
+
+function mail(a){
+    let email = 'mail@mail.ru';
+    let regexp = /[a-z0-9]@[a-z].[a-z]{2, 11}/gi
+    return console.log(regexp.test(email));
+}
+mail();
