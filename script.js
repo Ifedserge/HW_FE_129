@@ -1,52 +1,45 @@
-// задание 2
-let a1 = 5 % 3;
-let a2 = 3 % 5;
-let a3 = 5 + '3';
-let a4 = '5' - 3;
-let a5 = 75 + 'кг';
-let a6 = 785 * 653;
-let a7 = 100 / 25;
-let a8 = 0 * 0;
-let a9 = 0 / 2;
-let a10 = 89 / 0;
-let a11 = 98 + 2;
-let a12 = 5 - 98;
-let a13 = (8 + 56 * 4) / 5;
-let a14 = (9 - 12) * 7 / (5 + 2);
-let a15 = 1 || 0;
-let a16 = false || true;
-let a17 = true > 0;
-console.log(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a15, a16, a17);
+window.addEventListener('load', function(){
+    console.log('страница загружена');
+    let list = document.querySelector('.list')
 
-// задание 3
-let height = 23;
-let width = 10;
-let SPryam = height * width;
-console.log(SPryam + 'см');
+    let form = document.querySelector('.form form');
+    form.addEventListener('submit', function(event){
 
-// задание 4
-let Hcil = 10;
-let VCilindra = 3.14 * Math.pow(a7, 2) * Hcil;
-console.log(VCilindra)
+        if(document.querySelector('input[name=task]').value === ''){
+            event.preventDefault()
+            console.log("add task");
 
-//  задание 5
- let Rkrug = 5; 
- let Skrug = 3.14 * Math.pow(Rkrug, 2);
- console.log(Skrug)
+        }else{
+            let task = document.createElement('li')
+            let textInput = document.querySelector('input[name=task]').value;
+            task.classList.add('task');
+            
+            list.appendChild(task)
+            task.innerHTML = textInput;
+            event.preventDefault()
+            event.target.reset()
 
-//  задание 6
+            let redaction = document.createElement('span')
+            
+            task.appendChild(redaction);
+            redaction.innerHTML = 'ред';
 
-// let a = 5;
-// let b = 7;
-// let Htrap = 10;
-// let STrap = ((a + b) / 2 ) * Htrap;
-// console.log(STrap + 'см')
+            let point = document.querySelectorAll('.task');
+            point.forEach(function(element) {
+                element.addEventListener('click', function(){
+                        element.classList.toggle('active')
+                    });
+            })
+            
+            redaction.addEventListener('mousedown', function(event){
+                if(event.ctrlKey){
+                    task.innerHTML = prompt('Редактирование задачи')
+                }
+                
+        })
+        
+        }
 
-// задание 7
-let S = 2000000;
-let years = 5;
-let p = 10;
-let Pereplata = (S / 100 * p) * years;
-console.log(Pereplata)
-
- 
+        
+    })
+});
