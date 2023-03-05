@@ -1,0 +1,73 @@
+*{
+    padding: 0;
+    margin: 0;
+    background: no-repeat;
+}
+.container{
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+}
+.content {
+
+    margin: 15px auto;
+    width: 500px;
+    position: relative;
+    /* display: flex; */
+    /* align-items: center; */
+}
+.content .content_tab{
+    margin: 0 auto;
+    height: 300px;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+
+}
+.content .content_tab.active{
+    width: 100%;
+}
+.content .content_tab:first-child{
+    background-image: url(../img/patrick_01.jpg);
+}
+.content .content_tab:nth-child(2){
+    background-image: url(../img/patrick_02.jpg);
+}
+.content .content_tab:nth-child(3){
+    background-image: url(../img/patrick_03.jpg);
+}
+.content .content_tab:last-child{
+    background-image: url(../img/patrick_04.jpg);
+}
+
+.cards{
+    padding-top: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.cards .card__tab{
+    width: 200px;
+    height: 100px;
+    background-size:cover;
+    transition: 1s; 
+}
+.cards .card__tab:first-child{
+    background-image: url(../img/patrick_01.jpg);
+}
+.cards .card__tab:nth-child(2){
+    background-image: url(../img/patrick_02.jpg);
+}
+.cards .card__tab:nth-child(3){
+    background-image: url(../img/patrick_03.jpg);
+}
+.cards .card__tab:last-child{
+    background-image: url(../img/patrick_04.jpg);
+}
+.cards .card__tab:hover{
+    transform: scale(1.2); /* Увеличиваем масштаб */
+       
+}
