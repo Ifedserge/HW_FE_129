@@ -5,43 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-        let str = "Привет";
-        console.log(typeof(str));
+<!-- <div class="container">
+    <div class="gallery" id="gallery">
+        <ul class="gallery__thumbs thumbs">
+            <li class="gallery__img active"><a href="https://via.placeholder.com/800/001"><img src="https://via.placeholder.com/150/001" alt=""></a></li>
+            <li class="gallery__img"><a href="https://via.placeholder.com/800/002"><img src="https://via.placeholder.com/150/002" alt=""></a></li>
+            <li class="gallery__img"><a href="https://via.placeholder.com/800/003"><img src="https://via.placeholder.com/150/003" alt=""></a></li>
+            <li class="gallery__img"><a href="https://via.placeholder.com/800/004"><img src="https://via.placeholder.com/150/004" alt=""></a></li>
+            <li class="gallery__img"><a href="https://via.placeholder.com/800/005"><img src="https://via.placeholder.com/150/005" alt=""></a></li>
+            <li class="gallery__img"><a href="https://via.placeholder.com/800/006"><img src="https://via.placeholder.com/150/006" alt=""></a></li>
+        </ul>
+        <div class="gallery__preview preview hide">
+                <div class="gallery__preview-content">
+                    <ul>
+                        <li class="gallery__content active"><img src="https://via.placeholder.com/800/001"></li>
+                        <li class="gallery__content"><img src="https://via.placeholder.com/800/002"></li>
+                        <li class="gallery__content"><img src="https://via.placeholder.com/800/003"></li>
+                        <li class="gallery__content"><img src="https://via.placeholder.com/800/004"></li>
+                        <li class="gallery__content"><img src="https://via.placeholder.com/800/005"></li>
+                        <li class="gallery__content"><img src="https://via.placeholder.com/800/006"></li>
+                    </ul>
+                </div>
+            <button class="gallery__preview-close close">X</button>
+        </div>
+    </div>
 
-        let sum = 123;
-        console.log(typeof(sum));
+    <div class="portfolio" id="portfolio">
+        <ul class="portfolio__filter filter">
+            <li data-filter="all" class="active">All works</li>
+            <li data-filter="sites">Web sites</li>
+            <li data-filter="design">Design</li>
+            <li data-filter="logo">Logos</li>
+        </ul>
+        <ul class="portfolio__list list">
+            <li data-filter="sites">
+                <h3>Lorem, ipsum dolor.</h3>
+                <img src="https://via.placeholder.com/150" alt="">
+            </li>
+            <li data-filter="logo">
+                <h3>Dolore, ad consequatur?</h3>
+                <img src="https://via.placeholder.com/150" alt="">
+            </li>
+            <li data-filter="design">
+                <h3>Ut, provident quod!</h3>
+                <img src="https://via.placeholder.com/150" alt="">
+            </li>
+            <li data-filter="logo">
+                <h3>Minima, incidunt eius.</h3>
+                <img src="https://via.placeholder.com/150" alt="">
+            </li>
+            <li data-filter="sites">
+                <h3>Natus, officia corrupti!</h3>
+                <img src="https://via.placeholder.com/150" alt="">
+            </li>
+            <li data-filter="design">
+                <h3>Cumque, ea accusamus?</h3>
+                <img src="https://via.placeholder.com/150" alt="">
+            </li>
+            <li data-filter="sites">
+                <h3>Doloremque, aliquid rem.</h3>
+                <img src="https://via.placeholder.com/150" alt="">
+            </li>
+            <li data-filter="design">
+                <h3>Dignissimos, veniam vel.</h3>
+                <img src="https://via.placeholder.com/150" alt="">
+            </li>
+            <li data-filter="sites">
+                <h3>Sequi, blanditiis eligendi.</h3>
+                <img src="https://via.placeholder.com/150" alt="">
+            </li>
+        </ul>
+    </div>
+</div> -->
+ 
+<div class="tabs">
+    <ul class="cards">
+        <li class="card active">Cart One</li>
+        <li class="card">Cart Two</li>
+        <li class="card">Cart Three</li>
+    </ul>
+    <ul class="cards__content">
+        <li class="card__content active">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ea iure ipsa quae sed cum saepe laborum animi mollitia, quidem illum pariatur optio dolorem aut qui totam, rem perspiciatis, cupiditate esse culpa velit obcaecati voluptatem provident! Totam quibusdam neque dolorem. Quis nemo aliquam aperiam mollitia eius est laudantium voluptas quod.</li>
+        <li class="card__content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum veritatis tenetur temporibus quod nostrum dolorem iure unde accusamus accusantium. Tempora excepturi, voluptatum rem asperiores modi pariatur culpa nobis numquam tempore.</li>
+        <li class="card__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro necessitatibus cupiditate explicabo, sunt unde pariatur ab officia saepe placeat in ullam totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic totam quasi dolorum autem dignissimos doloribus veritatis voluptates dolor! Dolores tempora fugit a velit illo nulla delectus tenetur nemo repellendus adipisci! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque a iste, magni quae id at earum rerum debitis facere enim atque dicta reprehenderit alias maxime! Delectus sequi voluptas neque laboriosam!</li>
+    </ul>
+    <button class="btn_tab">Add Card</button>
+</div>
 
-        let num = 15.8;
-        console.log(typeof(num));
-
-        let flag = true; 
-        console.log(typeof(flag))
-
-        let txt = "true";
-        console.log(typeof(txt));
-
-
-        console.log('Бывало, спит у ног собака,\n\nкостер занявшийся гудит,\n\nи женщина из полумрака\n\nглазами зыбкими глядит.\n\n\n\nПотом под пихтою приляжет\n\nна куртку рыжую мою\n\nи мне, задумчивая, скажет:\n\n\n\n"А ну-ка, спой!.."- и я пою.');
-
-        let s1 = 'индо земля зашаталась под ногами-и вырос,';
-        let s2 = "и заревел он голосом диким...";
-        let s3 = "блеснула молния и ударил гром,";
-        let s4 = "а так какое-то чудище, страшное и мохнатое,"
-        let s5 = "как будто из-под земли, перед купцом:";
-        let s6 = "Он подошёл и сорвал аленький цветочек.";
-        let s7 = "зверь не зверь, человек не человек,"
-        let s8 = "В ту же минуту, безо всяких туч,"
-
-        console.log(s6, s8, s3, s1, s5, s7, s4, s2);
-
-    </script>
-    <script src="./script.js">
-        
-
-    </script>
+    <script src="filter.js"></script>
+    <script src="gallery.js"></script>
+    <script src="tabs.js"></script>
+    
 </body>
 </html>
