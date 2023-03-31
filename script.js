@@ -1,272 +1,207 @@
-// let carFord = {
-//     model: 'Ford',
-//     color: 'Red',
-//     doors: 2
-// };
-// console.log(carFord);
-
-// let Car = function(data){
-//     this.model = data.model;
-//     this.color = data.color;
-//     this.doors = data.doors;
-
-//     this.showModel = function() {
-//         return this.model;
-//     }
-// };
-
-// let carOpel =  new Car({
-//     model: 'Opel',
-//     color: 'green',
-//     doors: 4,
-// });
-// let carBMW =  new Car({
-//     model: 'BMW',
-//     color: 'black',
-//     doors: 4,
-// });
-// console.log(carOpel);
-// console.log(carBMW);
-
-// class Car2 {
-//     constructor(data){
-//         this.model = data.model;
-//         this.color = data.color;
-//         this.doors = data.doors;
-        
-//     }
-//     showModel() {
-//         return this.model;
-//     }
-// };
-
-// let carBenz =  new Car2({
-//     model: 'Benz',
-//     color: 'silver',
-//     doors: 2,
-// });
-// console.log(carBenz);
-
-// function f1(){
-//     console.log('f1');
-// };
-// function f2(){
-//     console.log('f2');
-// };
-// function f3(){
-//     console.log('f3');
-// };
-
-// class Dom{
-//     static create(type){
-//         return document.createElement(type)
-//     }
-
-//     static searh(selector){
-//         return document.querySelectorAll(selector)
-//     }
-
-//     static insert(to, element, beforeElemnt){
-//         if(!to || !element) return false;
-
-//         if(!beforeElemnt) to.appendChild(element);
-//         else to.insertBefore(element, beforeElemnt);
-//     }
-// }
-
-// // console.log(Dom.create('h1'));
-
-// let elemH1 = Dom.create('h1');
-// elemH1.innerHTML = 'Main';
-// Dom.insert(document.body, elemH1);
-
-// let User = function(){
-//     this.type = "User";
-
-//     this.showType = function(){
-//         console.log(this.type);
-//     }
-// };
-
-// class Admin {
-//     #type = 'Admin';
-
-//     static showType(){
-//         console.log(this.#type);
-//     }
-// };
-
-// console.dir(User);
-// console.dir(Admin);
-
-// let user = new User();
-// let admin = new Admin()
-
-// console.dir(user);
-// console.dir(admin);
-
-// console.log(user.type);
-// console.log((admin.type));
-
-// let Animal = function(name, eats, walk){
-//     this.name = name;
-
-//     this.eats = eats;
-//     this.walk = walk;
-
-//     this.showName = function(){
-//         alert(this.name);
-
-//     };
-// };
-// let Dog = function(name){
-//     Animal.apply(this, arguments);
-//     this.name = name;
-
-//     this.showName = function(){
-//         alert('Dog name is '+ this.name)
-//     };
-// };
-
-// let dog = new Dog('Bob', true, true);
-// console.log(dog);
-
-class Animal {
+class User{
     constructor(data){
-        this.name = data.name;
-        this.eat = data.eat;
+        this.data = data;
     };
-    showName() {
-        console.log(this.name);
+
+    edit(obj){
+        Object.assign(this.data, obj);
+    };
+    get(){
+        return this.data;
     };
 };
 
-let animal = new Animal({name: "Animal", eat: false});
 
-// console.log(animal);
-
-class Dog extends Animal {
-    constructor(data){
-        super(data);
-        this.speak = true;
-        this.walk = true;
+class Contacts {
+    constructor(){
+        this.contact = []
     };
-    bark(){
-        console.log('gaw');
+
+    add(data){
+        if(!data.name) return;
+
+        let user = new User()
+        user.data = data;
+        let id = this.getRandomId();
+        user.edit({ id });
+
+        this.contact.push(user);
     }
-};
-let dogBob = new Dog({name: 'Dog Bob', eat: true});
-// console.log(dogBob);
-// dogBob.showName();
-// dogBob.bark();
 
-// class User {
-//     constructor(data){
-//         this.name = data.name;
-//         this.email = data.email;
+    getRandomId(){
+        let id = Math.floor(Math.random() * 100);
 
-//         this.permissions = {
-//             view: true,
-//             buy: false,
-//             create: false,
-//             update: false,
-//             delete: false,
-//         };
-//     };
+        let flag = this.contact.some(user => user.data.id === id)
+        if(flag){
+            return this.getRandomId()
+        }else{
+            return id;
+        }
+    }
 
-//     get info(){
-//         return this.name + '(' + this.email + ')';
-//     };
-//     set info(data) {
-//         this.name = data.name;
-//         this.email = data.email;
-//     }
+    edit(id, obj){
+        // let user = this.data.find((user) => user.id !== id);
+        // if(user){
+        //     user.edit(obj)
+        // }
+        this.contact.forEach(user => {
+            if(user.data.id === id) {
+                user.edit
+            }
+        })
+    }
 
-//     view() {
-//         if(this.permissions.view) console.log(this.name + ': Просмотр страниц')}
+    remove(id){
+        this.contact = this.contact.filter(user => user.data.id !== id);
+    }
 
-//     create() {
-//         if(this.permissions.create) console.log(this.name + ': Создание страниц')}
+    get(){
+        return this.contact;
+    }
+}
 
-//     update() {
-//         if(this.permissions.update) console.log(this.name + ': Обновление страниц')}
+class ContactsApp extends Contacts{
+    constructor(selector){
+        super();
+        this.app = document.createElement('div');
+        this.app.classList.add('contacts');
+        document.body.appendChild(this.app);
+        this.interface(selector);
 
-//     delete() {
-//         if(this.permissions.deleta) console.log(this.name + ': Удаление страниц')}
+       
 
-//     buy() {
-//         if(this.permissions.buy) console.log(this.name + ': Покупка товара')}
+    };
+    // search(target, selector){
+    //     target  = target || document;
+    //     return target.querySelector(selector);
+    // }
+    interface(selector){
 
-//     getPermissions() {
-//         return this.permissions;
-//     }
-    
-// };
+        let form = document.createElement('form');
+        form.classList.add('form');
 
-// class Buyer extends User {
-//     constructor(data){
-//         super(data);
-//         this.permissions.buy = true;
-//     }
-// };
+        let inputName = document.createElement('input');
+        inputName.setAttribute('type', 'text');
+        inputName.setAttribute('placeholder', 'Имя');
 
-// class Editor extends User {
-//     constructor(data){
-//         super(data);
-//         this.permissions.create = true;
-//         this.permissions.update = true;
-//     }
-// };
+        let inputNumber = document.createElement('input');
+        inputNumber.setAttribute('type', 'text');
+        inputNumber.setAttribute('placeholder', 'Телефон');
 
-// class Admin extends User {
-//     constructor(data){
-//         super(data);
+        let inputMail = document.createElement('input');
+        inputMail.setAttribute('type', 'text');
+        inputMail.setAttribute('placeholder', 'Email');
 
-//         this.permissions.buy = true;
-//         this.permissions.delete = true;
-//         this.permissions.create = true;
-//         this.permissions.update = true;
-//     };
+        let inputAddress = document.createElement('input');
+        inputAddress.setAttribute('type', 'text');
+        inputAddress.setAttribute('placeholder', 'Адрес');
 
-//     create(){
-//         super.create();
-//         console.log(this.name + ': Дополнительные возможности по созданию страниц');
-//     }
+        let buttonAdd = document.createElement('button');
+        buttonAdd.setAttribute('type', 'submit');
+        buttonAdd.innerText = 'Добавить контакт';
 
-//     update(){
-//         super.update();
-//         console.log(this.name + ': Дополнительные возможности по обновлению страниц');
-//     }
+        this.contactContainer = document.createElement('div');
+        this.contactContainer.classList.add('contact__Container')
 
-//     delete(){
-//         super.delete();
-//         console.log(this.name + ': Дополнительные возможности по удалению страниц');
-//     }
-// };
 
-// let alex = new User ({name: 'Alex', email: 'alex@gmail.com'});
-// console.log(alex);
-// console.log(alex.getPermissions());
-// console.log(alex.info);
+        form.addEventListener('submit', event =>{
+            event.preventDefault();
 
-// let bob = new Buyer({ name: 'Bob', email:'bob@gmail.com'});
-// console.log(bob.info);
-// console.log(bob.getPermissions());
+            let name = inputName.value;
+            let number = inputNumber.value;
+            let mail = inputMail.value;
+            let address = inputAddress.value;
 
-// let mike = new Editor ({name: 'Mike', email: 'mike@gmail.com'});
-// console.log(mike.info);
-// console.log(mike.getPermissions());
+            this.add({name, number, mail, address})
 
-// let robert =  new Admin({name: 'Robert', email: 'robert@gmail.com'});
-// console.log(robert.info);
-// console.log(robert.getPermissions());
-// alex.create();
-// bob.view();
-// mike.create();
-// mike.update();
+            inputName.value = '';
+            inputNumber.value = '';
+            inputMail.value = '';
+            inputAddress.value = '';
 
-// robert.view();
-// robert.buy();
-// robert.create();
-// robert.update();
-// robert.delete();
+            console.log(this.contact);
+            this.render();
+
+        })
+
+        form.append(inputName, inputNumber, inputMail, inputAddress, buttonAdd);
+        this.app.append(form, this.contactContainer);
+
+    }
+
+    render(){
+        this.contactContainer.innerHTML = '';
+        this.contact.forEach(user => {
+            let flag = true;
+
+            let contactContainer = document.createElement('div');
+            contactContainer.classList.add('.contact__Container');
+
+            let nameContact = document.createElement('h2');
+            nameContact.classList.add('nameContact');
+            nameContact.innerText = user.data.name;
+
+            let numbContact = document.createElement('p');
+            numbContact.classList.add('numbContact');
+            numbContact.innerText = user.data.number;
+
+            let mailContact = document.createElement('p');
+            mailContact.classList.add('mailContact');
+            mailContact.innerText = user.data.mail;
+
+            let addressContact = document.createElement('p');
+            addressContact.classList.add('addressContact');
+            addressContact.innerText = user.data.address;
+
+            let del = document.createElement('button');
+            del.classList.add('del');
+            del.innerText = 'Delete';
+            del.addEventListener('click', ()=> {
+                this.onRemove(user.data.id);
+            });
+
+            let edit = document.createElement('button');
+            edit.classList.add('edit');
+            edit.innerText = 'Редактировать';
+            edit.addEventListener('click', ()=>{
+                if(flag){
+                    nameContact.contentEditable = true;
+                    numbContact.contentEditable = true;
+                    mailContact.contentEditable = true;
+                    addressContact.contentEditable = true;
+                    edit.innerText = 'Сохранить';
+                    flag = !flag;
+                }else{
+                    let data = {
+                        name: nameContact.innerText,
+                        number: numbContact.innerText,
+                        mail: mailContact.innerText,
+                        address: addressContact.innerText,
+                    }
+                    nameContact.contentEditable = false;
+                    numbContact.contentEditable = false;
+                    mailContact.contentEditable = false;
+                    addressContact.contentEditable = false;
+
+                    super.edit(user.data.id, data);
+                    edit.innerText = 'Редактировать';
+                    flag = !flag;
+                }
+
+
+                
+            });
+
+
+            contactContainer.append(nameContact, numbContact, mailContact, addressContact, edit, del);
+            this.contactContainer.append(contactContainer);
+        });
+    }
+
+    onRemove(id) {
+        super.remove(id);
+        this.render();
+    }
+}
+
+new ContactsApp();
