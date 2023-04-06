@@ -122,11 +122,20 @@ class ContactsApp extends Contacts{
             console.log(this.contact);
             this.render();
 
+            this.storage = this.contact; /* вроде тут надо добавить*/
         })
 
         form.append(inputName, inputNumber, inputMail, inputAddress, buttonAdd);
         this.app.append(form, this.contactContainer);
 
+        if(this.storage){
+            let data = this.storage;
+            // this.contact = data;
+            data.forEach(note =>{
+                Object.keys(note).forEach(key => this.add(note[key]));
+            })
+            this.render();
+        }
     }
 
     render(){
@@ -186,6 +195,7 @@ class ContactsApp extends Contacts{
                     super.edit(user.data.id, data);
                     edit.innerText = 'Редактировать';
                     flag = !flag;
+                    this.storage = this.contact; /* вроде тут надо добавить*/
                 }
 
 
@@ -202,6 +212,61 @@ class ContactsApp extends Contacts{
         super.remove(id);
         this.render();
     }
-}
+
+    set storage(data){
+        let json = JSON.stringify(data);
+        localStorage.setItem('contact', json);
+
+        this.cookie = 864000;
+
+    };
+    get storage(){
+        if(!localStorage.getItem('contact')) return false;
+
+        if(!this.cookie){
+            localStorage.removeItem('contact');
+            return falses; 
+        }
+
+        let data = localStorage.getItem('contact');
+        data = JSON.parse(data);
+        return data;
+    };
+
+    get cookie() {
+        let name = 'contact';
+        let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+          ));
+          return matches || false;
+    }
+
+    set cookie(time){
+        let name = 'contact';
+        let value = 'contact'; 
+
+        let options = {
+            path: '/',
+            secure: true,
+            'max-age': time
+          };
+        
+          if (options.expires instanceof Date) {
+            options.expires = options.expires.toUTCString();
+          }
+        
+          let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+        
+          for (let optionKey in options) {
+            updatedCookie += "; " + optionKey;
+            let optionValue = options[optionKey];
+            if (optionValue !== true) {
+              updatedCookie += "=" + optionValue;
+            }
+          }
+        
+          document.cookie = updatedCookie;
+    }
+};
 
 new ContactsApp();
