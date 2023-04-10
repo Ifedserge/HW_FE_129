@@ -71,11 +71,8 @@ class ContactsApp extends Contacts{
        
 
     };
-    // search(target, selector){
-    //     target  = target || document;
-    //     return target.querySelector(selector);
-    // }
-    interface(selector){
+  
+    async interface(selector){
 
         let form = document.createElement('form');
         form.classList.add('form');
@@ -108,11 +105,11 @@ class ContactsApp extends Contacts{
             event.preventDefault();
 
             let name = inputName.value;
-            let number = inputNumber.value;
-            let mail = inputMail.value;
+            let phone = inputNumber.value;
+            let email = inputMail.value;
             let address = inputAddress.value;
 
-            this.add({name, number, mail, address})
+            this.add({name, phone, email, address})
 
             inputName.value = '';
             inputNumber.value = '';
@@ -122,7 +119,7 @@ class ContactsApp extends Contacts{
             console.log(this.contact);
             this.render();
 
-            this.storage = this.contact; /* вроде тут надо добавить*/
+            this.storage = this.contact;
         })
 
         form.append(inputName, inputNumber, inputMail, inputAddress, buttonAdd);
@@ -130,10 +127,16 @@ class ContactsApp extends Contacts{
 
         if(this.storage){
             let data = this.storage;
-            // this.contact = data;
             data.forEach(note =>{
                 Object.keys(note).forEach(key => this.add(note[key]));
             })
+            this.render();
+        }else{
+            let data = await this.getData();
+            data.forEach(note =>{
+               this.add(note);
+            });
+            this.storage = this.contact;
             this.render();
         }
     }
@@ -152,11 +155,11 @@ class ContactsApp extends Contacts{
 
             let numbContact = document.createElement('p');
             numbContact.classList.add('numbContact');
-            numbContact.innerText = user.data.number;
+            numbContact.innerText = user.data.phone;
 
             let mailContact = document.createElement('p');
             mailContact.classList.add('mailContact');
-            mailContact.innerText = user.data.mail;
+            mailContact.innerText = user.data.email;
 
             let addressContact = document.createElement('p');
             addressContact.classList.add('addressContact');
@@ -183,8 +186,8 @@ class ContactsApp extends Contacts{
                 }else{
                     let data = {
                         name: nameContact.innerText,
-                        number: numbContact.innerText,
-                        mail: mailContact.innerText,
+                        phone: numbContact.innerText,
+                        email: mailContact.innerText,
                         address: addressContact.innerText,
                     }
                     nameContact.contentEditable = false;
@@ -266,6 +269,11 @@ class ContactsApp extends Contacts{
           }
         
           document.cookie = updatedCookie;
+    }
+
+    async getData(){
+        let response = await fetch('https://jsonplaceholder.typicode.com/users');
+        return await response.json();
     }
 };
 
