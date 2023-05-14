@@ -8,7 +8,12 @@ class Footer{
     create(){
         this.element = document.createElement('footer');
         this.element.classList.add('footer');
-
+        this.element.innerHTML = `
+            <div>
+                <p>Полезная информация</p>
+                <p>Очень полезная информация</p>
+            </div>
+        `
         
     }
 

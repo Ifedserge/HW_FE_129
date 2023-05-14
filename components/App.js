@@ -30,9 +30,9 @@ class App {
         const response = await fetch(`https://fakestoreapi.com/products/${id}`);
         if(!response.ok){
             products = await response.json();
-            localStorage.setItem('products', JSON.stringify(products));
+            // localStorage.setItem('products', JSON.stringify(products));
         }else{
-            products = JSON.parse(products);
+            products = JSON.parse(products).find(item => item.id === +id);
         }
         return products;
     }
@@ -75,7 +75,7 @@ class App {
 
 export default new App().init();
 
-let dataApp = new App().getData();
-let getItem = new App().getItem();
+let dataApp = new App().getData;
+let getItem = new App().getItem;
 export {dataApp};
 export {getItem};

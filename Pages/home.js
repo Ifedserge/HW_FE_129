@@ -1,4 +1,5 @@
-import { addCart } from './cart.js'
+// import { addCart, getStateItem } from './cart.js'
+import { addButton } from '../components/button.js';
 
 class Home{
     constructor(){
@@ -36,24 +37,16 @@ class Home{
                 </h3>
                 <p>${product.price}</p>
             `;
-            catalog.append(productDiv);
-            let addButton = document.createElement('button');
-        addButton.innerText = 'Add to cart';
-        addButton.addEventListener('click', () =>{
-            addCart(product);
+            catalog.append(productDiv);      
+
+        productDiv.append(addButton(product))
         })
 
-        productDiv.append(addButton)
-        })
-
-        
-        
         return this.main;
 
     }
     init(){
         this.create();
-        // return this.element
     }
 }
 
