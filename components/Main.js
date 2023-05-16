@@ -14,7 +14,7 @@ class Main {
         const render = async () => {
             this.element.innerHTML = '';
             let [module, id] = await router()
-            this.element.append(module(id));
+            this.element.append(module(id) || '');
             
         }
         
